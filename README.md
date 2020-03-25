@@ -45,6 +45,7 @@ de ejercicio que queremos dar de alta.
 
 Se nos mostrará un formulario en el que introduciremos los datos que queremos modificar de la tabla selecionada.
 
+<img src="imagenes/modificartabla1.png" alt="">
 <img src="imagenes/modificartabla2.png" alt="">
 <img src="imagenes/modificartabla3.png" alt="">
 
@@ -52,8 +53,8 @@ Se nos mostrará un formulario en el que introduciremos los datos que queremos m
 
 Al pursal sobre eliminar se borrará la tabla seleccionada.
 
-<img src="imagenes/eleminar.png" alt="">
-<img src="imagenes/eleminar2.png" alt="">
+<img src="imagenes/eliminar.png" alt="">
+<img src="imagenes/eliminar2.png" alt="">
 
 
 ## 2 UsuarioAdmin
