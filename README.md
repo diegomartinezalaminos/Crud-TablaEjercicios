@@ -53,8 +53,8 @@ Se nos mostrará un formulario en el que introduciremos los datos que queremos m
 
 Al pursal sobre eliminar se borrará la tabla seleccionada.
 
-<img src="imagenes/eleminartabla1.png" alt="">
-<img src="imagenes/eleminartabla2.png" alt="">
+<img src="imagenes/eleminar.png" alt="">
+<img src="imagenes/eleminar2.png" alt="">
 
 
 ## 2 UsuarioAdmin
