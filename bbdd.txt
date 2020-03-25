@@ -1,0 +1,80 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema CRUD-Diego
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema CRUD-Diego
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `CRUD-Diego` DEFAULT CHARACTER SET utf8 ;
+USE `CRUD-Diego` ;
+
+-- -----------------------------------------------------
+-- Table `CRUD-Diego`.`Usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `CRUD-Diego`.`Usuario` (
+  `CodUsu` INT NOT NULL AUTO_INCREMENT,
+  `NomUsu` VARCHAR(50) NOT NULL,
+  `ContraseniaUsu` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`CodUsu`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `CRUD-Diego`.`Dificultad`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `CRUD-Diego`.`Dificultad` (
+  `CodDificultad` INT NOT NULL AUTO_INCREMENT,
+  `TipoDificultad` VARCHAR(50) NOT NULL DEFAULT 'Sin especificar',
+  PRIMARY KEY (`CodDificultad`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `CRUD-Diego`.`TablaEjercicio`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `CRUD-Diego`.`TablaEjercicio` (
+  `CodTabla` INT NOT NULL AUTO_INCREMENT,
+  `NomTabla` VARCHAR(50) NOT NULL,
+  `EjerciciosTabla` VARCHAR(150) NOT NULL DEFAULT 'No hay',
+  `Dificultad_CodDificultad` INT NOT NULL,
+  PRIMARY KEY (`CodTabla`),
+  INDEX `fk_TablaEjercicio_Dificultad1_idx` (`Dificultad_CodDificultad` ASC),
+  CONSTRAINT `fk_TablaEjercicio_Dificultad1`
+    FOREIGN KEY (`Dificultad_CodDificultad`)
+    REFERENCES `CRUD-Diego`.`Dificultad` (`CodDificultad`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `CRUD-Diego`.`Usuario_TablaEjercicio`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `CRUD-Diego`.`Usuario_TablaEjercicio` (
+  `Usuario_CodUsu` INT NOT NULL,
+  `TablaEjercicio_CodTabla` INT NOT NULL,
+  PRIMARY KEY (`Usuario_CodUsu`, `TablaEjercicio_CodTabla`),
+  INDEX `fk_Usuario_has_TablaEjercicio_TablaEjercicio1_idx` (`TablaEjercicio_CodTabla` ASC),
+  INDEX `fk_Usuario_has_TablaEjercicio_Usuario_idx` (`Usuario_CodUsu` ASC),
+  CONSTRAINT `fk_Usuario_has_TablaEjercicio_Usuario`
+    FOREIGN KEY (`Usuario_CodUsu`)
+    REFERENCES `CRUD-Diego`.`Usuario` (`CodUsu`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Usuario_has_TablaEjercicio_TablaEjercicio1`
+    FOREIGN KEY (`TablaEjercicio_CodTabla`)
+    REFERENCES `CRUD-Diego`.`TablaEjercicio` (`CodTabla`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

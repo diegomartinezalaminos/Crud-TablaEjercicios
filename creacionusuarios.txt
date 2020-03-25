@@ -1,0 +1,2 @@
+INSERT INTO `usuario` (`CodUsuario`, `NomUsuario`, `ConUsuario`) VALUES ('1', 'admin', '1234');
+INSERT INTO `usuario` (`CodUsuario`, `NomUsuario`, `ConUsuario`) VALUES ('2', 'Diego', '1234');
